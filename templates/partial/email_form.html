@@ -1,0 +1,14 @@
+<div id="email-edit-container" class="flex justify-between items-center gap-4 ">
+    <form action="{% url 'profile-emailchange' %}" method="post" class="flex gap-2 text-black items-center" autocomplete="off">
+        {% csrf_token %}
+        {{ form.email }}
+        <button class="!bg-black text-white px-4 py-1 rounded" type="submit">
+    Submit
+</button>
+
+    </form>
+    <a href="{% url 'profile-settings' %}"
+       class="font-medium text-blue-600 hover:underline mr-6">
+        Cancel
+    </a>
+</div>

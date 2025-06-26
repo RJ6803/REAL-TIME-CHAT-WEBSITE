@@ -1,0 +1,50 @@
+{% extends "base.html" %}
+{% load widget_tweaks %}
+
+{% block layout %}
+<!-- Centered Login Card -->
+<div class="flex-grow flex justify-center items-center">
+  <div class="bg-white rounded-xl shadow-xl p-8 w-full max-w-md text-left mt-24">
+    <h1 class="text-2xl font-bold mb-2">Sign In</h1>
+    <p class="mb-6 text-gray-600">
+      If you have not created an account yet, then please
+      <a href="{% url 'account_signup' %}" class="text-black-500 hover:underline">sign up</a> first.
+    </p>
+
+    <form method="post" action="{% url 'account_login' %}" class="space-y-4">
+      {% csrf_token %}
+
+      <!-- Email Field -->
+      <div>
+        {{ form.login.label_tag }}
+        {{ form.login|add_class:"w-full border border-gray-300 rounded px-3 py-2 focus:outline-none focus:ring-2 focus:ring-blue-500" }}
+      </div>
+
+      <!-- Password Field -->
+      <div>
+        {{ form.password.label_tag }}
+        {{ form.password|add_class:"w-full border border-gray-300 rounded px-3 py-2 focus:outline-none focus:ring-2 focus:ring-blue-500" }}
+      </div>
+
+      <!-- Forgot Password and Remember Me -->
+      <div class="text-sm">
+        <a href="{% url 'password_reset' %}" class="text-black-500 hover:underline">Forgot your password?</a>
+      </div>
+
+      <!-- Remember Me on next line -->
+      <div class="text-sm">
+        <span class="ml-2">Remember Me</span>
+        <label class="inline-flex items-center">
+          {{ form.remember }}
+          
+        </label>
+      </div>
+
+      <!-- Submit Button -->
+      <div>
+        <button type="submit" class="bg-indigo-600 text-white px-4 py-2 rounded-md hover:bg-indigo-700">Sign In</button>
+      </div>
+    </form>
+  </div>
+</div>
+{% endblock %}

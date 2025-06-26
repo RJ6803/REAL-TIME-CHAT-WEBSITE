@@ -1,0 +1,25 @@
+<html>
+    <body>
+{% extends "base.html" %}
+{% block layout %}
+<div class="flex-grow flex justify-center items-center">
+  <div class="bg-white rounded-xl shadow-xl p-8 w-full max-w-md mt-24">
+    <h1 class="text-2xl font-bold mb-4">Confirm Email Address</h1>
+    <p class="mb-6">
+      Please confirm that <strong> <a href="mailto:{{ email }}" class="text-600 underline">
+        {{ email }}
+      </a></strong> is an email address for user {{ user.username }}.
+    </p>
+   <form method="post" action="">
+  {% csrf_token %}
+  <button type="submit"
+          class="!bg-black text-white px-4 py-1 rounded ">
+    Confirm
+  </button>
+</form>
+
+  </div>
+</div>
+{% endblock %}
+    </body>
+</html>

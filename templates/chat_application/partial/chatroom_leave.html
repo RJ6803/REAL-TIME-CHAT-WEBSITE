@@ -1,0 +1,68 @@
+<style>
+  #leave-modal {
+    position: fixed;
+    inset: 0;
+    background-color: rgba(0, 0, 0, 0.5);
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    z-index: 9999;
+  }
+
+  #leave-modal .modal-box {
+    background: white;
+    padding: 2rem;
+    border-radius: 1rem;
+    width: 400px;
+    box-shadow: 0 20px 40px rgba(0, 0, 0, 0.3);
+    text-align: center;
+  }
+
+  #leave-modal h2 {
+    font-size: 1.5rem;
+    font-weight: 700;
+    color: #111827;
+    margin-bottom: 1.75rem;
+  }
+
+  #leave-modal button {
+    padding: 0.75rem 1.5rem;
+    border: none;
+    font-weight: 700;
+    font-size: 1rem;
+    border-radius: 8px;
+    cursor: pointer;
+    margin: 0 8px;
+    transition: background-color 0.2s ease;
+  }
+
+  #leave-modal .leave-btn {
+    background-color: #dc2626;
+    color: white;
+  }
+
+  #leave-modal .cancel-btn {
+    background-color: #e5e7eb;
+    color: #374151;
+  }
+
+  #leave-modal .leave-btn:hover {
+    background-color: #b91c1c;
+  }
+
+  #leave-modal .cancel-btn:hover {
+    background-color: #d1d5db;
+  }
+</style>
+
+<div id="leave-modal">
+  <div class="modal-box">
+    <h2>Leave this chat?</h2>
+    <form method="POST" action="{% url 'chatroom-leave' chat_group.group_name %}">
+      {% csrf_token %}
+      <button type="submit" class="leave-btn">Yes, I want to leave</button>
+      <button type="button" class="cancel-btn" onclick="document.getElementById('leave-modal').remove();">Cancel</button>
+    </form>
+  </div>
+</div>
+
